@@ -1,0 +1,17 @@
+{
+    "name": "Employee",
+    "alias": "employee",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 85,
+    "providers": [
+        "Modules\\Employee\\Providers\\EmployeeServiceProvider",
+        "Modules\\Employee\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}
