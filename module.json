@@ -1,12 +1,14 @@
 {
     "name": "Employee",
     "alias": "employee",
+    "version": "1.0.1",
     "description": "",
     "keywords": [],
     "active": 1,
     "order": 85,
     "providers": [
         "Modules\\Employee\\Providers\\EmployeeServiceProvider",
+        "Modules\\Employee\\Providers\\EventServiceProvider",
         "Modules\\Employee\\Providers\\RouteServiceProvider"
     ],
     "aliases": {},
