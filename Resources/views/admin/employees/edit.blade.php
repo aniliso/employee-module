@@ -33,9 +33,6 @@
                     <div class="col-md-6">
                         {!! Form::normalInput('last_name', trans('employee::employees.form.last_name'), $errors, $employee) !!}
                     </div>
-                    <div class="col-md-12">
-                        {!! Form::normalInput('position', trans('employee::employees.form.position'), $errors, $employee) !!}
-                    </div>
                 </div>
             </div>
             <div class="box">
