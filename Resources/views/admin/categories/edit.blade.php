@@ -11,9 +11,6 @@
     </ol>
 @stop
 
-@section('styles')
-    {!! Theme::script('js/vendor/ckeditor/ckeditor.js') !!}
-@stop
 
 @section('content')
     {!! Form::open(['route' => ['admin.employee.category.update', $category->id], 'method' => 'put']) !!}
@@ -59,7 +56,8 @@
     </dl>
 @stop
 
-@section('scripts')
+@push('js-stack')
+    {!! Theme::script('js/vendor/ckeditor/ckeditor.js') !!}
     <script type="text/javascript">
         $( document ).ready(function() {
             $(document).keypressAction({
@@ -77,4 +75,4 @@
             });
         });
     </script>
-@stop
+@endpush

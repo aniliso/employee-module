@@ -11,10 +11,6 @@
     </ol>
 @stop
 
-@section('styles')
-    {!! Theme::script('js/vendor/ckeditor/ckeditor.js') !!}
-@stop
-
 @section('content')
     {!! Form::open(['route' => ['admin.employee.employee.update', $employee->id], 'method' => 'put']) !!}
     <div class="row">
@@ -132,7 +128,8 @@
     </dl>
 @stop
 
-@section('scripts')
+@push('js-stack')
+    {!! Theme::script('js/vendor/ckeditor/ckeditor.js') !!}
     <script type="text/javascript">
         $(document).ready(function () {
             $(document).keypressAction({
@@ -153,4 +150,4 @@
     <script>
         $(".textarea").wysihtml5();
     </script>
-@stop
+@endpush

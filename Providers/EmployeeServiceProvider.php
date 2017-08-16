@@ -3,14 +3,17 @@
 namespace Modules\Employee\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Employee\Composers\EmployeeComposer;
 use Modules\Employee\Composers\MenuModify;
+use Modules\Employee\Events\Handlers\RegisterEmployeeSidebar;
 use Modules\Media\Image\ThumbnailManager;
 
 class EmployeeServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -30,6 +33,11 @@ class EmployeeServiceProvider extends ServiceProvider
         if(view()->exists('partials.header')) {
             view()->composer('partials.header', MenuModify::class);
         }
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('employee', RegisterEmployeeSidebar::class)
+        );
     }
 
     public function boot()

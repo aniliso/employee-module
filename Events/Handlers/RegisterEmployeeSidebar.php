@@ -1,29 +1,14 @@
 <?php
 
-namespace Modules\Employee\Sidebar;
+namespace Modules\Employee\Events\Handlers;
 
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
-use Modules\User\Contracts\Authentication;
+use Modules\Core\Sidebar\AbstractAdminSidebar;
 
-class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
+class RegisterEmployeeSidebar extends AbstractAdminSidebar
 {
-    /**
-     * @var Authentication
-     */
-    protected $auth;
-
-    /**
-     * @param Authentication $auth
-     *
-     * @internal param Guard $guard
-     */
-    public function __construct(Authentication $auth)
-    {
-        $this->auth = $auth;
-    }
-
     /**
      * @param Menu $menu
      *
@@ -56,9 +41,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
                         $this->auth->hasAccess('employee.categories.index')
                     );
                 });
-// append
-
-
             });
         });
 
