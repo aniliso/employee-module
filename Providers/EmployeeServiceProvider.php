@@ -31,7 +31,13 @@ class EmployeeServiceProvider extends ServiceProvider
         $this->registerBindings();
 
         if(view()->exists('partials.header')) {
-            view()->composer('partials.header', MenuModify::class);
+            $template = setting('core::template');
+            if(\File::exists(base_path("Themes/{$template}/composers/MenuModify.php"))) {
+                include_once base_path("Themes/{$template}/composers/MenuModify.php");
+                view()->composer('partials.header', "\\Themes\\{$template}\\composers\\MenuModify");
+            } else {
+                view()->composer('partials.header', MenuModify::class);
+            }
         }
 
         $this->app['events']->listen(
