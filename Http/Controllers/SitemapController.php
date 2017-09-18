@@ -20,7 +20,6 @@ class SitemapController extends BaseSitemapController
         parent::__construct();
         $this->employee = $employee;
         $this->category = $category;
-        $this->sitemap->setCache('laravel.employee.sitemap', $this->sitemapCachePeriod);
     }
 
     public function index()
