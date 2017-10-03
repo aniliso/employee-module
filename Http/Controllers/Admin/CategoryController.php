@@ -5,6 +5,8 @@ namespace Modules\Employee\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Employee\Entities\Category;
+use Modules\Employee\Http\Requests\CreateCategoryRequest;
+use Modules\Employee\Http\Requests\UpdateCategoryRequest;
 use Modules\Employee\Repositories\CategoryRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -50,7 +52,7 @@ class CategoryController extends AdminBaseController
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
         $this->category->create($request->all());
 
@@ -76,7 +78,7 @@ class CategoryController extends AdminBaseController
      * @param  Request $request
      * @return Response
      */
-    public function update(Category $category, Request $request)
+    public function update(Category $category, UpdateCategoryRequest $request)
     {
         $this->category->update($category, $request->all());
 
