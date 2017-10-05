@@ -18,7 +18,7 @@ class RegisterEmployeeSidebar extends AbstractAdminSidebar
     {
         $menu->group(trans('core::sidebar.content'), function (Group $group) {
             $group->item(trans('employee::employees.title.employees'), function (Item $item) {
-                $item->icon('fa fa-copy');
+                $item->icon('fa fa-users');
                 $item->weight(10);
                 $item->authorize(
                     $this->auth->hasAccess('employee.employees.index')
