@@ -30,6 +30,11 @@ class EmployeeServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
 
+        $this->app->extend('asgard.ModulesList', function($app) {
+            array_push($app, 'employee');
+            return $app;
+        });
+
         if(view()->exists('partials.header')) {
             $template = setting('core::template');
             if(\File::exists(base_path("Themes/{$template}/composers/MenuModify.php"))) {
