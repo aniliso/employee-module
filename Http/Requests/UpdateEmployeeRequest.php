@@ -10,9 +10,7 @@ class UpdateEmployeeRequest extends BaseFormRequest
 
     public function translationRules()
     {
-        return [
-            'position'   => 'required'
-        ];
+        return [];
     }
 
     /**
@@ -24,8 +22,9 @@ class UpdateEmployeeRequest extends BaseFormRequest
     {
         return [
             'category_id' => 'required',
-            'first_name' => 'required',
-            'last_name'  => 'required'
+            'first_name'  => 'required',
+            'last_name'   => 'required',
+            'ordering'    => 'required'
         ];
     }
 

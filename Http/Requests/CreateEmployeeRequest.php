@@ -7,11 +7,10 @@ use Modules\Core\Internationalisation\BaseFormRequest;
 class CreateEmployeeRequest extends BaseFormRequest
 {
     protected $translationsAttributesKey = 'employee::employees.form';
+
     public function translationRules()
     {
-        return [
-            'position' => 'required'
-        ];
+        return [];
     }
 
     /**
@@ -23,8 +22,9 @@ class CreateEmployeeRequest extends BaseFormRequest
     {
         return [
             'category_id' => 'required',
-            'first_name' => 'required',
-            'last_name'  => 'required'
+            'first_name'  => 'required',
+            'last_name'   => 'required',
+            'ordering'    => 'required'
         ];
     }
 
