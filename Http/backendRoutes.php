@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 /** @var Router $router */
 
 $router->group(['prefix' =>'/employee'], function (Router $router) {
-    $router->bind('employee', function ($id) {
+    $router->bind('employeeEmployee', function ($id) {
         return app('Modules\Employee\Repositories\EmployeeRepository')->find($id);
     });
     $router->get('employees', [
@@ -22,17 +22,17 @@ $router->group(['prefix' =>'/employee'], function (Router $router) {
         'uses' => 'EmployeeController@store',
         'middleware' => 'can:employee.employees.create'
     ]);
-    $router->get('employees/{employee}/edit', [
+    $router->get('employees/{employeeEmployee}/edit', [
         'as' => 'admin.employee.employee.edit',
         'uses' => 'EmployeeController@edit',
         'middleware' => 'can:employee.employees.edit'
     ]);
-    $router->put('employees/{employee}', [
+    $router->put('employees/{employeeEmployee}', [
         'as' => 'admin.employee.employee.update',
         'uses' => 'EmployeeController@update',
         'middleware' => 'can:employee.employees.edit'
     ]);
-    $router->delete('employees/{employee}', [
+    $router->delete('employees/{employeeEmployee}', [
         'as' => 'admin.employee.employee.destroy',
         'uses' => 'EmployeeController@destroy',
         'middleware' => 'can:employee.employees.destroy'

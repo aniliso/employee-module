@@ -75,12 +75,10 @@ class PublicController extends BasePublicController
     public function view($slug)
     {
         $employee = $this->employee->findBySlug($slug);
-
-        if(is_null($employee)) $this->app->abort(404);
+        if(is_null($employee)) abort(404);
 
         /* Start Seo */
         $title = $employee->meta_title ? $employee->meta_title : $employee->fullname;
-        $url   = route('employee.view', [$employee->slug]);
 
         $this->setTitle($title)
             ->setDescription($employee->meta_description);
