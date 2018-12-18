@@ -50,8 +50,8 @@
                                     {!! Form::normalInput('fax', trans('employee::employees.form.fax'), $errors, $employee) !!}
                                 </div>
                             </div>
-                            {!! BSForm::label('address', trans('employee::employees.form.address')) !!}
-                            {!! BSForm::textarea('address', $employee->address, ['class'=>'textarea']) !!}
+                            {!! Form::label('address', trans('employee::employees.form.address')) !!}
+                            {!! Form::textarea('address', $employee->address, ['class'=>'form-control textarea']) !!}
                         </fieldset>
                     </div>
                 </div>

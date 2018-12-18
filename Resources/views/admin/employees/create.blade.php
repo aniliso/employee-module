@@ -50,7 +50,7 @@
                             </div>
                         </div>
 
-                        {!! BSForm::textarea('address', null, ['class'=>'textarea']) !!}
+                        {!! Form::textarea('address', null, ['class'=>'form-control textarea']) !!}
                     </fieldset>
                 </div>
             </div>

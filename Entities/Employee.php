@@ -36,7 +36,7 @@ class Employee extends Model
 
     public function getUrlAttribute()
     {
-        return \LaravelLocalization::getURLFromRouteNameTranslated(locale(), 'employee::routes.employee.view', ['slug'=>$this->slug]);
+        return route('employee::routes.employee.view', ['slug'=>$this->slug]);
     }
 
     public static function boot()
