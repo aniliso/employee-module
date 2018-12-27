@@ -36,7 +36,7 @@ class Employee extends Model
 
     public function getUrlAttribute()
     {
-        return route('employee::routes.employee.view', ['slug'=>$this->slug]);
+        return route('employee.view', ['slug'=>$this->slug]);
     }
 
     public static function boot()
