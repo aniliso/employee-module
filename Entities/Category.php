@@ -24,6 +24,6 @@ class Category extends Model
 
     public function getUrlAttribute()
     {
-        return route('employee.category', ['slug'=>$this->slug]);
+        return localize_trans_url(locale(), 'employee::routes.employee.category', ['slug'=>$this->slug]);
     }
 }

@@ -36,7 +36,7 @@ class Employee extends Model
 
     public function getUrlAttribute()
     {
-        return route('employee.view', ['slug'=>$this->slug]);
+        return localize_trans_url(locale(), 'employee::routes.employee.view', ['slug'=>$this->slug]);
     }
 
     public static function boot()
@@ -44,7 +44,12 @@ class Employee extends Model
         parent::boot();
 
         static::updating(function(Employee $employee) {
-            $employee->slug = str_slug(\Patchwork\Utf8::toAscii($employee->first_name.' '.$employee->last_name), '-');
+            $slug = str_slug(\Patchwork\Utf8::toAscii($employee->first_name.' '.$employee->last_name), '-');
+            $counter = $employee->where('slug', '=', $slug)->count();
+            if($counter>0) {
+                $slug .= '-'.$counter;
+            }
+            $employee->slug = $slug;
         });
     }
 }
