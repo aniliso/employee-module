@@ -19,6 +19,8 @@ class Employee extends Model
 
     protected $presenter = EmployeePresenter::class;
 
+    protected $appends = ['url'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -36,10 +38,10 @@ class Employee extends Model
 
     public function getUrlAttribute()
     {
-        return localize_trans_url(locale(), 'employee::routes.employee.view', ['slug'=>$this->slug]);
+        return localize_url(locale(), route('employee.view', $this->slug));
     }
 
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 

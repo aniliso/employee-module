@@ -52,17 +52,13 @@ class PublicController extends BasePublicController
         $employees = $this->employee->all();
 
         /* Start Seo */
-        $title = trans('themes::employee.title');
-        $url   = route('employee.index');
+        $url   = localize_url($this->locale, route('employee.index'));
 
         $this->setUrl($url)
-            ->addMeta('robots', "follow, index")
             ->addAlternates($this->getAlternateLanguages('employee::routes.employee.index'));
 
-        $this->setTitle($title)
-            ->setDescription($employees->map(function($employee) {
-                return $employee->fullname;
-            })->implode(','));
+        $this->setTitle(trans('themes::employee.title'))
+             ->setDescription(trans('themes::employee.meta_desc'));
         /* End Seo */
 
         return view('employee::index', compact('employees'));
@@ -81,19 +77,18 @@ class PublicController extends BasePublicController
         $title = $employee->meta_title ? $employee->meta_title : $employee->fullname;
 
         $this->setTitle($title)
-            ->setDescription($employee->meta_description);
+             ->setDescription($employee->meta_description);
 
         $this->setUrl($employee->url)
-            ->addMeta('robots', "follow, index")
-            ->addAlternates($employee->present()->languages);;
+             ->addAlternates($employee->present()->languages);;
 
         $this->seoGraph()->setTitle($title)
-            ->setDescription($employee->description)
-            ->setUrl($employee->url);
+             ->setDescription($employee->description)
+             ->setUrl($employee->url);
 
         $this->seoCard()->setTitle($title)
-            ->setType('app')
-            ->setDescription($employee->meta_description);
+             ->setType('app')
+             ->setDescription($employee->meta_description);
 
         /* Start Breadcrumbs */
         Breadcrumbs::register('employee.view', function($breadcrumbs) use ($employee) {
@@ -120,7 +115,6 @@ class PublicController extends BasePublicController
             ->setDescription($category->meta_description);
 
         $this->setUrl($url)
-            ->addMeta('robots', "follow, index")
             ->addAlternates($category->present()->languages);
 
         $this->seoGraph()->setTitle($title)

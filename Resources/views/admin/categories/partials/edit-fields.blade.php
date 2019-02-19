@@ -26,7 +26,7 @@
                 <div class="box-body">
                     {!! Form::i18nInput("meta_title", trans('employee::categories.form.meta_title'), $errors, $lang, $category) !!}
 
-                    {!! Form::i18nTextarea("meta_description", trans('employee::categoriest.form.meta_description'), $errors, $lang, $category, ['class'=>'form-control']) !!}
+                    {!! Form::i18nTextarea("meta_description", trans('employee::categories.form.meta_description'), $errors, $lang, $category, ['class'=>'form-control']) !!}
                 </div>
             </div>
         </div>

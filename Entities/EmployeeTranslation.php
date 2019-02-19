@@ -10,10 +10,13 @@ class EmployeeTranslation extends Model
     protected $fillable = ['description','biography','skills','position','meta_title','meta_description'];
     protected $table = 'employee__employee_translations';
 
-    protected $appends = ['url'];
+    protected function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 
     public function getUrlAttribute()
     {
-        return localize_trans_url($this->locale, 'employee::routes.employee.view', ['slug'=>$this->slug]);
+        return localize_trans_url($this->locale, 'employee::routes.employee.view', ['slug' => $this->employee->slug]);
     }
 }
