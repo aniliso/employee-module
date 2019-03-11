@@ -19,8 +19,6 @@ class Employee extends Model
 
     protected $presenter = EmployeePresenter::class;
 
-    protected $appends = ['url'];
-
     public function category()
     {
         return $this->belongsTo(Category::class);
