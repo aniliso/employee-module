@@ -35,6 +35,8 @@ class EmployeeServiceProvider extends ServiceProvider
             return $app;
         });
 
+        $this->registerWidgets();
+
         if(view()->exists('partials.header')) {
             $template = setting('core::template');
             if(\File::exists(base_path("Themes/{$template}/composers/MenuModify.php"))) {
@@ -100,6 +102,11 @@ class EmployeeServiceProvider extends ServiceProvider
             }
         );
 
+    }
+
+    private function registerWidgets()
+    {
+      \Widget::register('employeeCategories', '\Modules\Employee\Widgets\EmployeeWidgets@categories');
     }
 
     private function registerThumbnails()

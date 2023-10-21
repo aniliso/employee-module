@@ -17,6 +17,6 @@ return [
         // Read module views from /Themes/<frontend-theme-name>/views/modules/<module-name>
         'frontend-theme' => true,
         // Read module views from /resources/views/<module-name>
-        'resources' => false,
+        'resources' => true,
     ],
 ];
