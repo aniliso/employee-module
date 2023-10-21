@@ -24,7 +24,7 @@ class EmployeeWidgets
 
   public function categories($limit=10, $view='categories')
   {
-    $categories = $this->category->all()->take($limit);
+    $categories = $this->category->all()->sortBy('ordering')->take($limit);
     if($categories->count() > 0) {
       return view('employee::widgets.'.$view, compact('categories'));
     }

@@ -22,7 +22,7 @@ class Employee extends Model
       'settings' => 'object'
     ];
 
-    protected $appends = ['license_date'];
+    protected $appends = ['license_date', 'experience_year', 'experience'];
 
     protected $presenter = EmployeePresenter::class;
 
@@ -63,12 +63,16 @@ class Employee extends Model
       return isset($settings->license_date) ? Carbon::parse($settings->license_date) : Carbon::now();
     }
 
-    public function getLicenseYearAttribute()
+    public function getExperienceYearAttribute()
     {
       $settings = $this->getSettingsAttribute();
-      $licenseDate = $this->getLicenseDateAttribute();
-      $licenseYear = isset($settings->license_year) ? $settings->license_year : null;
-      return $licenseYear ?? $licenseDate->diffInYears(Carbon::now());
+      return isset($settings->experience_year) ? Carbon::createFromDate($settings->experience_year) : Carbon::now();
+    }
+
+    public function getExperienceAttribute()
+    {
+      $experienceYear = $this->getExperienceYearAttribute();
+      return $experienceYear->diffInYears(Carbon::now());
     }
 
     protected static function boot()
